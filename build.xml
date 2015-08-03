@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="oa" basedir="." default="compile">
+       <!-- properies -->  
+	    <property name="unpack.dir" value="../安装包2.20/tomcat/tomcat/webapps/" /> 
+        <property name="src.dir" value="src/main/java" />  
+        <property name="classes.dir" value="WEB-INF/classes" />  
+        <property name="dist.dir" value="dist" />  
+        <property name="lib.dir" value="webapp/WEB-INF/lib" />  
+	    <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/> 
+
+        <!-- 初始化 -->
+	    <target name="init" depends="clean">
+		    <mkdir dir="${unpack.dir}oa"/> 	        
+	        <copy includeemptydirs="false" todir="${unpack.dir}oa">
+	            <fileset dir="webapp" excludes="**/*.launch, **/*.java, **/*.class"/>				
+	        </copy>
+			<copy includeemptydirs="false" todir="${unpack.dir}oa/${classes.dir}">
+			    <fileset dir="${src.dir}" excludes="**/*.launch, **/*.java"/>
+		    </copy>
+	    </target>
+
+	    <!-- jar文件 -->
+	     <path id="master-classpath">  
+             <fileset file="${lib.dir}/*.jar" />  
+			 <pathelement path="${classes.dir}"/>  
+         </path> 
+	    
+	    <!-- 删除以前的文件 -->
+	    <target name="clean">
+	        <delete dir="${unpack.dir}oa"/>
+	    </target>
+		<!-- 编译 -->
+        <target name="compile" depends="init"> 
+		    <mkdir dir="${unpack.dir}oa/${classes.dir}"/>
+            <javac srcdir="${src.dir}" destdir="${unpack.dir}oa/WEB-INF/classes" nowarn= "off"   debug= "off" source="1.6" target="1.6">  
+                <classpath refid="master-classpath"/>  
+                <compilerarg line="-encoding UTF-8"/> 				
+            </javac> 			
+        </target>
+        
+
+</project> 

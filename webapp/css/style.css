@@ -1,0 +1,652 @@
+body {
+	font-size: 12px;
+	font-family: "宋体";
+	margin: 0px;
+	background-color: #F8F8F8;
+}
+form {
+	margin: 0px 0px 0px 10px;
+	color: #666666;
+}
+thead {
+	text-align: center;
+	background-color: #F0F0F0;
+	font-size: 14px;
+	font-weight: bold;
+}
+tbody tr {
+	height: 18px;
+}
+a {
+	font-size: 12px;
+	line-height: 20px;
+	font-family: "宋体";
+	text-decoration: none;
+	color: #000000;
+}
+input, select, table {
+	font-size: 12px;
+}
+input {
+	border-style: solid;
+	border-width: 1px;
+	height: 18px;
+	border-color: #A6A6A6;
+}
+
+#table_list_thead tr {
+	background-image: url(tr_bg.gif);
+	
+}
+
+label {
+	font-weight: bold;
+}
+.c_oa_login_bg1 {
+	background-image: url(oa_login_bg1.gif);
+}
+.c_oa_login_bg2 {
+	background-image: url(oa_login_bg2.gif);
+}
+.c_main_bottom_td {
+	background-image: url(main_bottom_bg.gif);
+}
+.c_main_bar {
+	background-image: url(main_bar_bg.gif);
+}
+.c_main_bar_arrow_left {
+	background: url(main_bar_arrow_left.gif) no-repeat;
+	cursor: hand;
+}
+.c_main_bar_arrow_right {
+	background: url(main_bar_arrow_right.gif) no-repeat;
+	cursor: hand;
+}
+.c_main_bar_arrow {
+	background-image: url(main_bar_arrow_left.gif);
+	height: 81px;
+	width: 10px;
+	background-repeat: no-repeat;
+}
+.c_main_top_left {
+	position: absolute;
+	background: url(topbg.gif);
+	padding:0px;
+	top:0;
+	left:0;
+	width: 80px;
+	height:66px;
+	float:left;
+	z-index:-1;
+}
+.c_main_top_center {
+	background-image: url(topbg.gif);
+	height: 66px;
+	padding:0px;
+	margin-right: 434px;
+	margin-left: 78px;
+}
+.c_main_top_right {
+	background: url(topbg.gif);
+	position: absolute;
+	float:right;
+	height:66px;
+	width:434px;
+	top: 0px;
+	right: 0px;
+	z-index:-1;
+}
+.c_main_top_righttop {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	width: 200px;
+	z-index:10;
+}
+.c_main_top_panel {
+	background-image: url(main_top_panel.gif);
+	width:30px;
+	height:36px;
+	float:left;
+}
+.c_main_top_panel_1 {
+	background-image: url(main_top_panel_1.gif);
+	width:20px;
+	height:34px;
+	float:left;
+}
+.c_main_top_panel_2 {
+	background-image: url(main_top_panel_2.gif);
+	width: 82px;
+	height: 34px;
+	cursor: hand;
+	float:left;
+}
+.c_main_top_panel_3 {
+	background-image: url(main_top_panel_3.gif);
+	width: 13px;
+	height: 36px;
+	cursor: hand;
+	float:left;
+}
+.c_main_top_panel_4 {
+	background-image: url(main_top_panel_4.gif);
+	width: 84px;
+	height:34px;
+	cursor: hand;
+	float:right;
+}
+.c_main_top_menu {
+	background: url(main_top_menu_bg.gif);
+	height:31px;
+}
+.c_main_top_menu_item {
+	margin-top:0px;
+	padding-top:7px;
+	padding-left:30px;
+	height:31px;
+	width:110px;
+	float:left;
+	color: #000000;
+}
+#css3_zm_wz {
+	position: absolute; margin-top: 2px;
+}
+.c_main_top_menu_zm {
+	background: url(main_top_menu_zm.gif) no-repeat;
+	height:31px;
+}
+.c_main_top_menu_dy {
+	background: url(main_top_menu_dy.gif) no-repeat;
+	height:31px;
+}
+.c_main_top_menu_db {
+	background: url(main_top_menu_db.gif) no-repeat;
+	height:31px;
+}
+.c_main_top_menu_rc {
+	background: url(main_top_menu_rc.gif) no-repeat;
+	height:31px;
+}
+.c_main_top_menu_yj {
+	background: url(main_top_menu_yj.gif) no-repeat;
+	height:31px;
+}
+.c_main_top_menu_txl {
+	background: url(main_top_menu_txl.gif) no-repeat;
+	height:31px;
+}
+.c_main_top_menu_im {
+	background: url(main_top_menu_im.gif) no-repeat;
+	height:31px;
+}
+.c_main_top_menu_arrow_up {
+	margin-top:10px;
+	margin-right:10px;
+	height:14px;
+	width:12px;
+	background: url(main_top_menu_arrow_up.gif) no-repeat center;
+	float:right;
+}
+.c_main_top_menu_arrow_down {
+	margin-top:10px;
+	margin-right:10px;
+	height:14px;
+	width:12px;
+	background: url(main_top_menu_arrow_down.gif) no-repeat center;
+	float:right;
+}
+.c_table_bar {
+	FONT-SIZE: 12px;
+	COLOR: #666666;
+	border: #BFD6F8;
+	font-weight: bold;
+	line-height: 19px;
+	border-style: solid;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+	border-left-width: 1px;
+	background-image: url(table_bar_bg.gif);
+	cursor: hand;
+}
+.c_table_bar_arrow_up {
+	background: url(table_bar_arrow_up.gif) no-repeat center;
+}
+.c_table_bar_arrow_down {
+	background: url(table_bar_arrow_down.gif) no-repeat center;
+}
+/*备用*/
+.c_table_bar_content {
+}
+.c_table_list {
+	border-collapse: collapse;
+}
+
+.c_table_list td {
+	border: #A0A0A0 solid 1px;
+}
+/*数据列表显示区域
+.c_div_table_list {
+	height: 210px; 
+	overflow: auto;
+}
+*/
+/*记录导航*/
+.c_div_table_list_nav {
+	background: #FFFF00;
+}
+.c_table_list_nav_text {
+	width: 460px;
+	float: right;
+	text-align:right;
+}
+/*记录导航左侧按钮区域*/
+.c_table_list_nav_btn {
+	padding-left: 20px;
+	margin-top: 3px;
+	float: left;
+	;
+}
+/*tablehover插件需要的 起*/
+.c_trOdd {
+	background-color: #FFFFFF;
+}
+/**
+.c_trEven {
+	background-color: #F0F0F0;
+}
+**/
+.c_trEven {
+	background-color: #FFFFFF;
+}
+
+.c_trHover {
+	background-color: LemonChiffon;
+	font-weight: 800;
+}
+.c_trClick {
+	background-color: #aaaaaa;
+	;
+	color: #fff;
+}
+/*tablehover插件需要的 止*/
+/*标签页需要的 起*/
+#c_tab {
+	float:left;
+	width:100%;
+}
+#c_tab ul {
+	margin:0;
+	padding:1px 10px 0 10px;
+	list-style:none;
+}
+#c_tab li {
+	display:inline;
+	margin:0;
+	padding:0;
+	font:bold 12px;
+}
+#c_tab a {
+	float:left;
+	background:url(tab_left.gif) no-repeat left top;
+	margin:0;
+	margin-left: 3px;
+	padding:0 0 0 4px;
+	text-decoration:none;
+}
+#c_tab a span {
+	float:left;
+	display:block;
+	background:url(tab_right.gif) no-repeat right top;
+	padding:1px 10px 0px 6px;
+	color:#666;
+}
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+    #c_tab a span {
+	float:none;
+}
+/* End IE5-Mac hack */
+    #c_tab a:hover span {
+	color:#000;
+}
+#c_tab a:hover {
+	background-position:0% -42px;
+}
+#c_tab a:hover span {
+	background-position:100% -42px;
+}
+#c_tab .c_current_tab a {
+	background-position:0% -42px;
+}
+#c_tab .c_current_tab a span {
+	background-position:100% -42px;
+}
+
+#c_iframetab {
+	float:left;
+	width:100%;
+	background:#F4F4F4;
+}
+#c_iframetab ul {
+	margin:0;
+	padding:1px 10px 0 10px;
+	list-style:none;
+}
+#c_iframetab li {
+	display:inline;
+	margin:0;
+	padding:0;
+	font:bold 12px;
+}
+#c_iframetab a {
+	float:left;
+	background:url(tab_left.gif) no-repeat left top;
+	margin:0;
+	padding:0 0 0 4px;
+	text-decoration:none;
+}
+#c_iframetab a span {
+	float:left;
+	display:block;
+	background:url(tab_right.gif) no-repeat right top;
+	padding:1px 10px 0px 6px;
+	color:#666;
+}
+/* Commented Backslash Hack hides rule from IE5-Mac \*/
+    #c_iframetab a span {
+	float:none;
+}
+/* End IE5-Mac hack */
+    #c_iframetab a:hover span {
+	color:#000;
+}
+#c_iframetab a:hover {
+	background-position:0% -42px;
+}
+#c_iframetab a:hover span {
+	background-position:100% -42px;
+}
+#c_iframetab .c_current_iframetab a {
+	background-position:0% -42px;
+}
+#c_iframetab .c_current_iframetab a span {
+	background-position:100% -42px;
+}
+
+.c_desk_dot_left {
+	position: absolute;
+	height:13px;
+	width:13px;
+	background: url(desk_081.gif) no-repeat left;
+	float:right;
+}
+.c_desk_dot_each {
+	position: absolute;
+	height:5px;
+	width:7px;
+	hspace:3px;
+	vspace:3px;
+	background: url(desk_arrow_018.gif) no-repeat left;
+	float:left;
+}
+
+/**
+ * This is the widgets basic CSS. Note that you can change
+ * the classes names using the plugin settings. But you can
+ * use directly the default classes names, this names.
+ */
+
+.widget-place {
+  margin: 0;
+  padding: 0;
+  float: left;
+  width: 33.3%;
+  height: auto;
+  list-style: none;
+  min-height: 400px;
+}
+
+.widget-placeholder {
+  border: #000 dashed 1px;
+}
+
+    .widget-menu a {
+      margin: 0 0 0 0.5em;
+    }
+
+  
+/**
+ * This is the widgets basic CSS. Note that you can change
+ * the classes names using the plugin settings. But you can
+ * use directly the default classes names, this names.
+ */
+
+.widget-place {	
+  width: 49%;
+}
+
+
+
+.widget {
+  margin: 1%;
+  border: #ebebeb solid 1px;
+}
+  .widget-header {  
+    width: 100%;
+    padding: 1%; 
+    background: url(desk_oa_btn_bg01.jpg);
+  }
+
+
+  .widget-editbox {
+    color: #000;
+    margin: 0.2em;
+    padding: 0.2em;
+    background-color: yellow;
+  }
+
+  .widget-content {
+    width: 100%;
+
+  }
+
+div#ajax-progress {
+  top: 0.2em;
+  color: #fff;
+  right: 0.2em;
+  display: none;
+  padding: 0.2em;
+  position: fixed;
+  font-weight: bold;
+  background-color: red;
+}
+
+div#callbacks-console {
+  clear: both;
+  color: lime;
+  height: 100px;
+  overflow: auto;
+  padding: 0.5em;
+  margin: 1em 0 0 0;
+  line-height: normal;
+  background-color: #000;
+  border: silver solid 2px;
+}
+
+.bgnew {
+text-align:center;
+/*background-image: url("hjzxbg.jpg");*/
+}
+
+.logobg {
+background-image: url("oa_login_bg_xt.png");
+}
+
+.main_top_bottom_line {
+	position:absolute;
+	width: 100%;
+	height: 3px;
+	background-image: url("main_top_menu_bg_bottom.gif");
+}
+
+.login_denglu {
+background-image: url("denglu.jpg");
+width: 67px;
+height: 20px;
+position: relative;
+left:0px;
+top: 13px
+}
+
+.login_chongzhi {
+background-image: url("dengluchongzhi.jpg");
+width: 67px;
+height: 20px;
+position: relative;
+left: 75px;
+top: -7px;
+}
+
+@charset "utf-8";
+.tabpanel {
+  overflow: hidden;
+}
+
+.tabpanel_tab_content {
+  width: 100%;
+  height: 25px;
+  line-height: 25px;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.tabpanel_tab_content .tabpanel_move_content {
+  width: 0px;
+  overflow: hidden;
+}
+
+.tabpanel_move_content_scroll {
+  margin-left: 18px;
+  margin-right: 18px;
+}
+
+.tabpanel_mover {
+  width: 5000px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+}
+
+.tabpanel_mover li {
+  width: 90px;
+  height: 22px;
+  line-height: 22px;
+  border: solid 1px #C0C0C0;
+  float: left;
+  position: relative;
+  list-style-type: none;
+  cursor: pointer;
+  background-color: #CEE7F7;
+}
+
+.tabpanel_mover li .closer {
+  background: transparent url(tabpanel_tab-close.gif) no-repeat;
+  position: absolute;
+  right: 2px;
+  top: 4px;
+  width: 13px;
+  height: 13px;
+  cursor: pointer;
+}
+
+.tabpanel_mover li .title {
+  font-size: 12px;
+  padding-left: 5px;
+  color: #529ADE;
+  display: inline;
+}
+
+.tabpanel_mover li.active {
+  font-weight: bold;
+  background-color: #FFFBFF;
+}
+
+.tabpanel_tab_content{
+ 	
+} 
+
+.tabpanel_left_scroll {
+  background: transparent url(tabpanel_scroll-left.gif) no-repeat 0px 0;
+  border-bottom: solid 1px #8DB2E3;
+  position: absolute;
+  width: 18px;
+  height: 25px;
+  left: 0px;
+  top: -1px;
+  cursor: pointer;
+  z-index: 10;
+}
+ 
+.tabpanel_right_scroll {
+  background: transparent url(tabpanel_scroll-right.gif) no-repeat 0 0;
+  border-bottom: solid 1px #8DB2E3;
+  position: absolute;
+  width: 18px;
+  height: 25px;
+  right: 0px;
+  top: -1px;
+  cursor: pointer;
+  z-index: 10;
+  
+}
+
+.tabpanel_tab_content .tabpanel_scroll_over {
+  background-position: -18px 0;
+}
+
+.tabpanel_tab_content .tabpanel_left_scroll_disabled {
+  background-position: 0 0;
+  opacity: .5;
+  -moz-opacity: .5;
+  filter: alpha(opacity = 50);
+  cursor: default;
+}
+
+.tabpanel_right_scroll_disabled {
+  background-position: -36px 0;
+  opacity: .5;
+  -moz-opacity: .5;
+  filter: alpha(opacity = 50);
+  cursor: default;
+}
+
+.display_none {
+  display: none;
+}
+.disabled {
+  color: gray;
+}
+
+.tabpanel_tab_content .tabpanel_tab_spacer {
+ 
+}
+
+.tabpanel_content {
+  border: 1px solid #C0C0C0;
+  background-color: #FFF;
+  border-top: 0 none;
+  overflow: auto;
+  position: relative;
+}
+
+.tabpanel_content .html_content {
+  width: 100%;
+  height: 100%;
+  background-color: #FFF;
+  position: absolute;
+  z-index: 0;
+  left: 0;
+  top: 0;
+}

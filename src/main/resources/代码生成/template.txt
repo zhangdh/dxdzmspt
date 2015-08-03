@@ -1,0 +1,14 @@
+﻿模块:sdunisi.ict.oa.xxfb;数据表:t_xx;默认控件:input size="20"
+[==查询==]
+查询范围[查询范围]|类别A[t_dm:122]|字段1|日期[日期]
+[==查询结果==]
+字段1|字段2|字段3
+反选|删除
+[==数据==]
+新增|保存|授权按钮{!}
+字段1*{maxlength="30" readonly="readonly" disabled="disabled"}
+字段2[t_dm:122]
+字段3{type="checkbox"}
+附件信息：[附件]
+人员选择：[人员选择][提醒]
+[KE]

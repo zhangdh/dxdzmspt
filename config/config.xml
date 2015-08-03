@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="GBK"?>
+<config>
+	<!-- 服务端信息由平台运营商提供 -->
+	<server>
+		<!-- 服务端IP地址 http://211.137.137.228:9081 -->
+		<url>http://211.137.137.228:9081</url>
+		<!-- 用户名 -->
+		<user>018686</user>
+		<!-- 密码 -->
+		<passwd>123456</passwd>
+	</server>
+	<!-- 客户端信息由CP自己定义 -->
+	<client>
+		<!-- 客户端侦听端口，此信息和IP构成平台请求CP的URL -->
+		<port>9999</port>
+		<!-- 发送请求时等待响应超时时间，单位：毫秒 -->
+		<timeOut>10000</timeOut>
+	</client>
+	<!-- 配置xml模板文件路径 -->
+	<template>
+		<!-- 短信请求包模板 -->
+		<smsReqXml>./xml/smsreq.xml</smsReqXml>
+		<!-- 彩信请求包模板 -->
+		<mmsReqXml>./xml/mmsreq.xml</mmsReqXml>
+		<!-- 回应包模板 -->
+		<responseXml>./xml/resp.xml</responseXml>
+	</template>
+	<!-- 定义系统信息 -->
+	<system>
+		<!-- api日志路径 -->
+		<logDir>./log</logDir>
+		<!-- 上行彩信压缩包存放路径 -->
+		<zipDir>./zip</zipDir>
+		<!-- 是否开启log功能，YES－开启，NO－关闭 -->
+		<isLog>YES</isLog>
+		<!-- 是否开启debug功能，YES－开启，NO－关闭 -->
+		<isDebug>YES</isDebug>
+	</system>
+</config>

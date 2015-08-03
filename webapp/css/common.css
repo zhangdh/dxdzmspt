@@ -1,0 +1,68 @@
+.dataedit{
+	padding:5px;
+}
+body {
+	font-size: 14px;
+	font-family: "宋体";
+	margin: 0px;
+	background-color: #F8F8F8;
+}
+.table_show{
+	font-size: 12px;
+	font-family: "宋体";
+}
+.c_text{
+	text-align: right;
+	padding-right: 10px;
+	background-color:#EEEEEE;
+}
+.c_table{
+	border: 1px solid #D6D7CE;
+	border-collapse: collapse;
+	font-size: 12px;
+	font-family: "宋体";
+}
+.c_table td{
+	border: 1px solid #D6D7CE;
+}
+.div_oper{
+	width:100%;
+	height:25px;
+	padding:5px;
+	background:#E0E0E0;
+}
+.div_search{
+	border:1px solid #E7EFFF;
+	margin-bottom:2px;
+}
+.div_search_top{
+	width:100%;
+	height:25px;	
+	background:#CEE7F7;
+}
+.div_search_top img{
+	width:16px;
+	height:16px;
+	margin-top:4px;
+	margin-left:5px
+}
+.div_search_top span{
+	margin-top:2px;
+	font-weight:800;
+	font-size:13px;
+	color:#529ADE;
+	margin-top:2px;
+	height:25px;
+	line-height:25px;
+	font-family:Microsoft Yahei;
+}
+
+.btn_query{
+	height:22px;
+	background-color:#1B7ACC;
+	border:0px;
+	font-size: 15px;
+	font-weight: bold;
+	color:white;
+	padding:4px 0 0 0;
+}

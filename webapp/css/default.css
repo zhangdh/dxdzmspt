@@ -1,0 +1,34 @@
+input.editable-select {
+  background: #FFF url("arrow-down.gif") right center no-repeat;
+  padding-right: 13px;
+}
+ .editable-select-options ul {
+  margin: 0;
+  padding: 0;
+  z-index: 10;
+  list-style: none;
+  list-style-image: none;
+  background-color: #000000;
+}
+.editable-select-options li {
+  cursor: default;
+  padding: 2px;
+}
+.editable-select-options li.selected {
+  background: #EAEAEA;
+}
+.editable-select-options ul li:hover {
+  background: #C0C0C0;
+}
+
+
+.editable-select-options ul li.check {
+  background: #FFFFFF url("noselect.png") left center no-repeat;
+  padding-left: 17px;
+}
+
+.editable-select-options ul li.checked {
+  background: #C0C0C0 url("selected.png") left center no-repeat;
+  padding-left: 17px;
+  
+}

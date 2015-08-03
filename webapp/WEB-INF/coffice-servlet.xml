@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		classpath:spring-beans-2.5.xsd
+		http://www.springframework.org/schema/tx 
+		classpath:spring-tx-2.5.xsd
+		http://www.springframework.org/schema/context 
+		classpath:spring-context-2.5.xsd">
+	<context:annotation-config />
+	<context:component-scan base-package="com.coffice" />
+	<context:component-scan base-package="name.xio" />
+	<bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="order" value="2"></property>
+		<property name="prefix" value="/" />
+	</bean>
+	<bean id="jsonViewResolver" class="org.springframework.web.servlet.view.XmlViewResolver">
+		<property name="order" value="1"></property>
+	</bean>
+	<tx:annotation-driven transaction-manager="txManager" />
+
+	<!-- a PlatformTransactionManager is still required -->
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<!-- (this dependency is defined somewhere else) -->
+		<property name="dataSource" ref="ds" />
+	</bean>
+	<!-- 数据源配置 -->
+	<bean id="utilDb" class="com.coffice.util.Db">
+		<property name="ds">
+			<ref local="ds" />
+		</property>
+		<property name="dsCownew">
+			<ref local="dsCownew" />
+		</property>
+	</bean>
+
+	<bean id="jt" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource">
+			<ref local="ds" />
+		</property>
+	</bean>
+	<bean id="jtCownew" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource">
+			<ref local="dsCownew" />
+		</property>
+	</bean>
+	<bean id="ds" class="org.logicalcobwebs.proxool.ProxoolDataSource">
+		<property name="alias" value="ds" />
+		<property name="driver">
+			<value>net.sourceforge.jtds.jdbc.Driver</value>
+			<!-- 
+				com.mysql.jdbc.Driver
+				net.sourceforge.jtds.jdbc.Driver
+				oracle.jdbc.driver.OracleDriver
+			-->
+		</property>
+		<property name="driverUrl">
+			<value>jdbc:sqlserver://127.0.0.1;databaseName=dx12345</value>
+			<!-- 
+				jdbc:mysql://127.0.0.1:3306/oa2_dev?useUnicode=true&amp;characterEncoding=UTF-8
+				jdbc:sqlserver://172.16.10.44;databaseName=oa2
+				jdbc:oracle:thin:@172.16.10.44:1521:orcl44
+			-->
+		</property>
+		<property name="user" value="sa" />
+		<property name="password" value="sdunisi_" />
+		<property name="prototypeCount" value="3" />
+		<property name="maximumConnectionCount" value="50" />
+		<property name="minimumConnectionCount" value="5" />
+		<property name="houseKeepingTestSql" value="select 1" />
+	</bean>
+	<bean id="dsCownew" class="org.logicalcobwebs.proxool.ProxoolDataSource">
+		<property name="alias" value="dsCownew" />
+		<property name="driver">
+			<value>com.cownew.cownewsql.imsql.jdbc.DBDriver</value>
+		</property>
+		<property name="driverUrl">
+			<value>jdbc:cownewsql:mssql:net.sourceforge.jtds.jdbc.Driver:jdbc:sqlserver://127.0.0.1;databaseName=dx12345</value>
+			<!-- 
+				jdbc:cownewsql:mysql:com.mysql.jdbc.Driver:jdbc:mysql://127.0.0.1:3306/oa2_dev?useUnicode=true&amp;characterEncoding=UTF-8
+				jdbc:cownewsql:mssql:net.sourceforge.jtds.jdbc.Driver:jdbc:sqlserver://172.16.10.44;databaseName=oa2
+				jdbc:cownewsql:oracle:oracle.jdbc.driver.OracleDriver:jdbc:oracle:thin:@172.16.10.44:1521:orcl44
+			 -->
+		</property>
+		<property name="user" value="sa" />
+		<property name="password" value="sdunisi_" />
+		<property name="prototypeCount" value="3" />
+		<property name="maximumConnectionCount" value="50" />
+		<property name="minimumConnectionCount" value="5" />
+		<property name="houseKeepingTestSql" value="select 1" />
+	</bean>
+	
+	
+<!-- 第二数据源配置 -->
+ <!-- 
+	<bean id="utilDbWeb" class="com.coffice.util.DbWeb">
+		<property name="dsWeb">
+			<ref local="dsWeb" />
+		</property>
+		<property name="dsCownewWeb">
+			<ref local="dsCownewWeb" />
+		</property>
+	</bean>
+
+	<bean id="jtWeb" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource">
+			<ref local="dsWeb" />
+		</property>
+	</bean>
+	<bean id="jtCownewWeb" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource">
+			<ref local="dsCownewWeb" />
+		</property>
+	</bean>
+	<bean id="dsCownewWeb" class="org.logicalcobwebs.proxool.ProxoolDataSource">
+        <property name="alias" value="dsCownewWeb" />
+		<property name="driver">
+			<value>com.cownew.cownewsql.imsql.jdbc.DBDriver</value>
+		</property>
+		<property name="driverUrl">
+			<value>jdbc:cownewsql:oracle:oracle.jdbc.driver.OracleDriver:jdbc:oracle:thin:@172.16.10.9:1521:ipcc1</value>
+			
+		</property>
+		<property name="user" value="icd" />
+		<property name="password" value="Dzlt123#" />
+		<property name="prototypeCount" value="3" />
+		<property name="maximumConnectionCount" value="50" />
+		<property name="minimumConnectionCount" value="5" />
+		<property name="houseKeepingTestSql" value="select 1" />
+	</bean>
+	<bean id="dsWeb" class="org.logicalcobwebs.proxool.ProxoolDataSource">
+		<property name="alias" value="dsWeb" />
+		<property name="driver">
+			<value>oracle.jdbc.driver.OracleDriver</value>
+			
+		</property>
+		<property name="driverUrl">
+			<value>jdbc:oracle:thin:@172.16.10.9:1521:ipcc1</value>
+			
+		</property>
+		<property name="user" value="icd" />
+		<property name="password" value="Dzlt123#" />
+		<property name="prototypeCount" value="3" />
+		<property name="maximumConnectionCount" value="50" />
+		<property name="minimumConnectionCount" value="5" />
+		<property name="houseKeepingTestSql" value="select 1" />
+	</bean>	
+ -->	 
+</beans>

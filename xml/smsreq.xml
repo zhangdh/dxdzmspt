@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="GBK" ?>
+<ipf>
+	<header>
+		<transactionId>10011001</transactionId>
+		<user>0199</user>
+		<passwd>123456</passwd>
+		<packageType>SMSMTRequest</packageType>
+	</header>
+	<body>
+		<actId>SMS2MMS</actId>
+		<spCode>0123456789</spCode>
+		<feeTerminalId>13813388666</feeTerminalId>
+		<destTerminalId>13813388666</destTerminalId>
+		<serviceId>12345678</serviceId>
+		<feeType>1</feeType>
+		<feeCode>0</feeCode>
+		<needReport>1</needReport>
+		<msgFormat>15</msgFormat>
+		<msgContent>test</msgContent>
+		<linkid>0123456789</linkid>
+	</body>
+</ipf>

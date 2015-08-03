@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2008 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * Text field dialog window.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="noindex, nofollow" name="robots" />
+<script src="../../dialog/common/fck_dialog_common.js" type="text/javascript"></script>
+<script type="text/javascript">
+_userPickerName = "sdcncsi_ict_zs";
+var dialog	= window.parent ;
+var oEditor = dialog.InnerDialogLoaded() ;
+
+// Gets the document DOM
+var oDOM = oEditor.FCK.EditorDocument ;
+
+var oActiveEl = dialog.Selection.GetSelectedElement() ;
+
+window.onload = function()
+{
+	// First of all, translate the dialog box texts
+	oEditor.FCKLanguageManager.TranslatePage(document) ;
+	
+	if ( oActiveEl && oActiveEl.tagName == 'INPUT')
+	{
+		GetE('txtRemark').value		= oActiveEl.remark ;
+		
+		if(oActiveEl.pickertype!='_send_to'&&oActiveEl.pickertype!='_copy_to'&&oActiveEl.pickertype!='_form_author'){
+			GetE('txtName').value = oActiveEl.name;
+			GetE('selectType').value = 'other';
+			GetE('trName').style.visibility = 'visible';
+		}else{
+			GetE('selectType').value	= oActiveEl.pickertype ;
+		}
+		//GetE('selectType').value	= GetAttribute( oActiveEl, 'remark' ) ;
+	}	
+	else
+		oActiveEl = null ;
+
+	dialog.SetOkButton( true ) ;
+	dialog.SetAutoSize( true ) ;
+	SelectField( 'txtRemark' ) ;
+}
+
+function Ok()
+{	
+	//yupeng txtName must be not blank 
+	if(GetE('selectType').value =='other'){
+	if(!CheckInput(GetE('txtName'),GetE('txtRemark'))){
+		return false;
+		}
+	 var txtName = 	GetE('txtName').value ;
+     var c = /^[a-zA-Z][0-9a-zA-Z_]*$/;   
+     if (!c.test(txtName)){
+      alert("名称只能为字母、数字、下划线，且必须以字母开头！！"); 
+      return;  
+     } 	
+	}else{//txtRemark不能为空
+	 var txtRemark = GetE('txtRemark').value;
+	 if(txtRemark==''){
+	   alert('备注不能为空！！');
+	   return;
+	 }
+	}
+    var order = GetE('order').value;	
+	if(order!=''&&isNaN(order.Trim())){
+	 alert("排序序号必须为数字！！");
+	 return false;
+	}
+	oEditor.FCKUndo.SaveUndoStep() ;
+	
+	if(_userPickerName=='')
+		_userPickerName = GetE('txtName').value;
+	
+	oActiveEl = CreateNamedElement( oEditor, oActiveEl, 'INPUT', {name: _userPickerName, type: 'text' } ) ;
+	
+	//SetAttribute( oActiveEl, 'value'	, '${'+GetE('txtRemark').value+'}' ) ;
+	SetAttribute( oActiveEl, 'value'	, GetE('selectType').options(GetE('selectType').selectedIndex).text) ;
+	//SetAttribute( oActiveEl, 'onclick'	, 'window.showModalDialog("blank.jsp", "","")') ;
+	SetAttribute( oActiveEl, 'remark', GetE('txtRemark').value ) ;
+	var pickertype = GetE('selectType').value;
+	SetAttribute( oActiveEl, 'pickertype', pickertype ) ;
+	if(pickertype=="sdcncsi_ict_zs"||pickertype=="sdcncsi_ict_cs"){
+	SetAttribute( oActiveEl, 'show', GetE('show').value ) ;
+	}
+	SetAttribute( oActiveEl, 'readyOnly' ,'readyOnly');
+	SetAttribute( oActiveEl, 'order', GetE('order').value ) ;
+	if(oActiveEl.parentNode){
+	  node=oActiveEl.parentNode;
+	  while(true){
+	   if(node.nodeName=='TD'){
+	    break;
+	   }else{
+	   if(node.parentNode){
+	   node = node.parentNode;
+	   }else{
+	   break;
+	   }
+	   }
+	  }
+	  if(node.nodeName=='TD'){
+	  	 node.id="td"+GetE('selectType').value;
+	 node.setAttribute("remark",GetE('txtRemark').value);  
+	 node.setAttribute("class","${"+node.id+"_tdClass}"); 
+	  SetAttribute(oActiveEl,'pid',node.id);
+	  }
+	}
+	return true ;
+}
+function CheckInput( name , remark )
+{
+	if(name.value.Trim()==''){
+		alert('\u540d\u79f0\u4e0d\u80fd\u4e3a\u7a7a');
+		name.focus();
+		return false;
+	}
+	if(name.value.Trim()!=='')
+	{
+		if(!isNaN(name.value.Trim())){
+			alert('\u540d\u79f0\u4e0d\u80fd\u4e3a\u6570\u5b57');
+			name.focus();
+			return false;
+		}
+		if(remark.value.Trim()==''){
+			alert('\u5185\u5bb9\u63cf\u8ff0\u4e0d\u80fd\u4e3a\u7a7a');
+			remark.focus();
+			return false;
+		}
+	}
+	return true;
+}
+function changeHandler(Obj){
+	var trName = GetE('trName');
+	if(Obj.value=='other'){
+		_userPickerName = "";
+		trName.style.visibility = 'visible';
+	}else{
+		_userPickerName = Obj.value;
+		trName.style.visibility = 'hidden';
+	}
+	if(Obj.value=="sdcncsi_ict_zs"||Obj.value=="sdcncsi_ict_cs"){
+     GetE('sfxs').style.display = '';
+    }else{
+     GetE('sfxs').style.display = 'none';
+    }
+}
+
+</script>
+</head>
+<body style="overflow: hidden">
+<table width="100%" style="height: 100%">
+	<tr>
+		<td align="center">
+		<table cellspacing="0" cellpadding="0" border="0">
+			<tr>
+				<td><span fcklang="DlgUserPickerRemark">Remark</span><br />
+				<input id="txtRemark" type="text" size="20" /></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><span fcklang="DlgUserPickerType">Type</span><br />
+				<select id="selectType" onchange="changeHandler(this)"><option value="sdcncsi_ict_zs">主送</option><option value="sdcncsi_ict_cs">抄送</option><option value="sdcncsi_ict_ngr">拟稿人</option><option value="other">其他</option></select></td>
+				<td></td>
+			</tr>
+			<tr id="sfxs">
+				<td><span>显示控制</span><br />
+				<select id="show"><option value="1">查看时显示</option><option value="0">查看时不显示</option></select></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><span fcklang="DlgComponentOrder">DlgComponentOrder</span><br/>
+				<input id="order" type="text" size="20" />
+				</td>
+				<td></td>
+			</tr>
+			<tr id="trName" style="visibility: hidden;">
+				<td><span fcklang="DlgName">DlgName</span><br />
+				<input id="txtName" type="text" size="20" /></td>
+				<td></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,10 @@
+.c_main_bar {
+		background: #d5e4f2;
+}
+.c_main_bar_arrow_left {
+	background: url(main_bar_arrow_left.gif) no-repeat;
+	cursor: hand;
+}
+.c_main_bar {
+		background: #d5e4f2;
+}

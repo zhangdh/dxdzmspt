@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2008 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * Text field dialog window.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="noindex, nofollow" name="robots" />
+<script src="../../dialog/common/fck_dialog_common.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+var dialog	= window.parent ;
+var oEditor = dialog.InnerDialogLoaded() ;
+
+// Gets the document DOM
+var oDOM = oEditor.FCK.EditorDocument ;
+
+var oActiveEl = dialog.Selection.GetSelectedElement() ;
+
+window.onload = function()
+{
+	// First of all, translate the dialog box texts
+	oEditor.FCKLanguageManager.TranslatePage(document) ;
+	
+	if ( oActiveEl && oActiveEl.tagName == 'INPUT' && ( oActiveEl.type == 'text' || oActiveEl.type == 'password' ) && (oActiveEl.onfocus || oActiveEl.className=='Wdate'))
+	{
+		// GetE('txtRemark').value		= oActiveEl.value ;
+		//GetE('selectType').value	= GetAttribute( oActiveEl, 'remark' ) ;
+	}	
+	else
+		oActiveEl = null ;
+
+	dialog.SetOkButton( true ) ;
+	dialog.SetAutoSize( true ) ;
+	SelectField( 'txtRemark' ) ;
+}
+
+function Ok()
+{	
+	//yupeng txtName must be not blank 
+	//if(!CheckInput(GetE('txtName'),GetE('txtRemark')))
+	//	return false;
+  /*  var txtName = 	GetE('txtName').value ;
+     var c = /^[a-zA-Z]+$/;   
+     if (!c.test(txtName)){
+      alert("名称只能为英文字符！！"); 
+      return;  
+     } 
+     */
+	oEditor.FCKUndo.SaveUndoStep() ;
+	var order = GetE('order').value;	
+	if(order!=''&&isNaN(order.Trim())){
+	 alert("排序序号必须为数字！！");
+	 return false;
+	}
+	var txtRemark = GetE('txtRemark').value;
+	if(txtRemark==''){
+	   alert("备注不能为空！！");
+	   return false;
+	}
+	oActiveEl = CreateNamedElement( oEditor, oActiveEl, 'INPUT', {name: GetE('selectType').value, type: 'text' } ) ;
+	
+	//SetAttribute( oActiveEl, 'value'	, '${'+GetE('txtRemark').value+'}' ) ;
+	SetAttribute( oActiveEl, 'value'	, '${'+GetE('selectType').value+'}' ) ;
+	SetAttribute( oActiveEl, 'remark', GetE('txtRemark').value ) ;
+	//SetAttribute( oActiveEl, 'class'	, 'Wdate' ) ;
+	//SetAttribute( oActiveEl, 'onFocus', "WdatePicker({skin:'whyGreen',isShowClear:false,readOnly:true})" ) ;
+	SetAttribute( oActiveEl, 'readyOnly' ,'readyOnly');
+	SetAttribute( oActiveEl, 'order', GetE('order').value ) ;
+	if(oActiveEl.parentNode){
+	  node=oActiveEl.parentNode;
+	  while(true){
+	   if(node.nodeName=='TD'){
+	    break;
+	   }else{
+	   if(node.parentNode){
+	   node = node.parentNode;
+	   }else{
+	   break;
+	   }
+	   }
+	  }
+	  if(node.nodeName=='TD'){
+	  	 node.id="td"+GetE('selectType').value;
+	 node.setAttribute("remark",GetE('txtRemark').value);  
+	 node.setAttribute("class","${"+node.id+"_tdClass}"); 
+	  SetAttribute(oActiveEl,'pid',node.id);
+	  }
+	}
+	return true ;
+}
+function CheckInput( name , remark )
+{
+	if(name.value.Trim()==''){
+		alert('\u540d\u79f0\u4e0d\u80fd\u4e3a\u7a7a');
+		name.focus();
+		return false;
+	}
+	if(name.value.Trim()!=='')
+	{
+		if(!isNaN(name.value.Trim())){
+			alert('\u540d\u79f0\u4e0d\u80fd\u4e3a\u6570\u5b57');
+			name.focus();
+			return false;
+		}
+		if(remark.value.Trim()==''){
+			alert('\u5185\u5bb9\u63cf\u8ff0\u4e0d\u80fd\u4e3a\u7a7a');
+			remark.focus();
+			return false;
+		}
+	}
+	return true;
+}
+	</script>
+</head>
+<body style="overflow: hidden">
+<table width="100%" style="height: 100%">
+	<tr>
+		<td align="center">
+		<table cellspacing="0" cellpadding="0" border="0">
+			<tr>
+				<td><span fcklang="DlgPublicTextRemark">Remark</span><br />
+				<input id="txtRemark" type="text" size="20" /></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td><span fcklang="DlgPublicTextType">Type</span><br />
+				<select id="selectType" ><option value="sdcncsi_ict_ztc">主题词</option><option value="sdcncsi_ict_gwbt">公文标题</option></select></td>
+				<td></td>
+			</tr>
+			<tr>
+                <td><span fcklang="DlgComponentOrder">DlgComponentOrder</span><br />
+				<input id="order" type="text" size="20" />
+				</td>
+				<td></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

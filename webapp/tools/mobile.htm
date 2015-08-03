@@ -1,0 +1,78 @@
+<html>
+<head>
+<META HTTP-EQUIV="MSThemeCompatible" CONTENT="Yes">
+<meta http-equiv="Content-Type" content="text/html; charset=unicode">
+<title>Currency Converter</title>
+<STYLE type="text/css">
+	body, td, input, select, p { font-family:[$TextFont]; font-size:[$TextFontSize]pt}
+
+	a:link       { color: #0000FF; text-decoration: none }
+	a:visited    { color: #0000FF; text-decoration: none }
+	a:hover      { color: #FF0000; text-decoration: none }
+	a:active     { color: #FF0000; text-decoration: none }
+
+	a:link.msg 		{ color: #7DA1CD; text-decoration: none }
+	a:visited.msg { color: #7DA1CD; text-decoration: none }
+	a:hover.msg   { color: #0000FF; text-decoration: none }
+	a:active.msg  { color: #0000FF; text-decoration: none }
+	
+</STYLE>
+</head>
+
+<BODY topmargin="10" leftmargin="10" rightmargin="10" bottommargin="10">
+<script type="text/javascript" src="../js/jquery-1.3.1.js"></script>
+<script language="JavaScript" type="text/javascript">
+$(function(){
+	$("#search").ajaxStart(function(){
+		document.getElementById("t").innerHTML = "<span style='font-size:83%'>正在请求网络服务...</span><br/><img border='0' width='120' height='4' src='" + document.getElementById("t").waitimg + "'>";
+	});
+	$("#search").click(function(){
+		$.getJSON("http://api.showji.com/locating/?output=json&m="+$("#a").val(),function(json){
+			if(json.QueryResult == "True")
+			{
+				var sText = "<table border='1' cellspacing='0' cellpadding='5' style='border-collapse: collapse' bordercolor='#C0C0C0' bgcolor='#FFFFFF'>";
+				sText += "<tr><td> &nbsp; 号 码 段 &nbsp;</td><td width='210'>" + json.Mobile.substr(0, 7) + "</td></tr>";
+				sText += "<tr><td> &nbsp; 归 属 地 &nbsp;</td><td>" + json.Province + "&nbsp; " + json.City + "</td></tr>";
+				sText += "<tr><td> &nbsp; 运 营 商 &nbsp;</td><td>" + json.Corp + "&nbsp; " + json.Card + "</td></tr>";
+				sText += "<tr><td> &nbsp; 邮政编码 &nbsp;</td><td>" + json.PostCode + "</td></tr>";
+				sText += "<tr><td> &nbsp; 电话区号 &nbsp;</td><td>" + json.AreaCode + "</td></tr>";
+				sText += "</table>";
+			}
+			else
+			{
+				var sText = "<span style='color:#ff0000'>查询不到该号码的信息, 请检查输入是否正确!</span>";
+			}
+			document.getElementById("t").innerHTML = sText;
+		});
+	});
+});
+
+function checkMobile(sMobile)
+{
+	if(/^1[3|5|8][0-9]\d{4,8}$/.test(sMobile))
+		return true;
+	else
+		return false;
+}
+
+</script>
+
+<div align="center">
+	<p>&nbsp;</p>
+	<div style="color:#0;font-size:16px">&nbsp;<b>中国手机号码归属地查询</b></div>
+	<hr noshade color="#E0E0E0" size="1">
+	<table border="0" cellspacing="0" cellpadding="5" style="margin: 10 0 10 0">
+		<tr>
+			<td><span style="color:#000080"><b>手机号码（段）</b></span></td>
+			<td><input id="a" name="a" maxlength="11" size="14" value=""></td>
+			<td><input id="search" type="button" value=" 查询 "></td>
+		</tr>
+	</table>
+	<div id="t" name="t" dir="ltr"  style="margin: 10 0 10 0"></div>
+	<hr noshade color="#E0E0E0" size="1">
+	<div style="color: #7DA1CD; font-size: 100%"><span>Powered by 手机在线</span></div>
+	
+</div>
+
+</BODY>
+</html>

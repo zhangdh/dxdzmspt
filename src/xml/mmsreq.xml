@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ipf>
+	<header>
+		<transactionId>10011001</transactionId>
+		<user>test</user>
+		<passwd>123456</passwd>
+		<packageType>MMSMTRequest</packageType>
+	</header>
+	<body>
+		<actId>SMS2MMS</actId>
+		<feeTerminalId>13813388666</feeTerminalId>
+		<destTerminalId>13813388666</destTerminalId>
+		<ccTerminalId>13813388777,13813388787
+		</ccTerminalId>
+		<serviceId>12345678</serviceId>
+		<fee>100</fee>
+		<needReport>0</needReport>
+		<msgTitle>XXXX</msgTitle>
+		<msgContent>base64</msgContent>
+		<linkid>0123456789</linkid>
+	</body>
+</ipf>

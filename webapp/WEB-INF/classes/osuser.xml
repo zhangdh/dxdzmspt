@@ -1,0 +1,36 @@
+<opensymphony-user>
+<provider class="com.opensymphony.user.provider.jdbc.JDBCAccessProvider">
+<property name="user.table">os_user</property>
+<property name="group.table">os_group</property>
+<property name="membership.table">os_membership</property>
+<property name="user.name">username</property>
+<property name="user.password">passwordhash</property>
+<property name="group.name">groupname</property>
+<property name="membership.userName">username</property>
+<property name="membership.groupName">groupname</property>
+<property name="datasource">java:comp/env/jdbcjndi</property>
+</provider>
+<provider class="com.opensymphony.user.provider.jdbc.JDBCCredentialsProvider">
+<property name="user.table">os_user</property>
+<property name="group.table">os_group</property>
+<property name="membership.table">os_membership</property>
+<property name="user.name">username</property>
+<property name="user.password">passwordhash</property>
+<property name="group.name">groupname</property>
+<property name="membership.userName">username</property>
+<property name="membership.groupName">groupname</property>
+<property name="datasource">java:comp/env/jdbc/sdcncsioa</property>
+</provider>
+<provider class="com.opensymphony.user.provider.jdbc.JDBCProfileProvider">
+<property name="user.table">os_user</property>
+<property name="group.table">os_group</property>
+<property name="membership.table">os_membership</property>
+<property name="user.name">username</property>
+<property name="user.password">passwordhash</property>
+<property name="group.name">groupname</property>
+<property name="membership.userName">username</property>
+<property name="membership.groupName">groupname</property>
+<property name="datasource">java:comp/env/jdbc/sdcncsioa</property>
+</provider>
+<authenticator class="com.opensymphony.user.authenticator.SmartAuthenticator"/>
+</opensymphony-user>

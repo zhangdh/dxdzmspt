@@ -1,0 +1,14 @@
+<config>
+  <Active>true</Active>
+  <Listeners>
+    <!--ConsoleDBListener no arguments-->
+    <Listener class="com.cownew.JDBMonitor.listenerImpl.ConsoleDBListener" arg=""/>
+    <!--the arguments of FileDBListener is the file to log the SQL statement 
+    <Listener class="com.cownew.JDBMonitor.listenerImpl.FileDBListener" arg="c:/aaa.txt"/>
+    -->
+  </Listeners>
+  <JdbcDrivers>
+    <JdbcDriver class="com.cownew.cownewsql.imsql.jdbc.DBDriver"/>
+    <JdbcDriver class="com.mysql.jdbc.Driver"/>
+  </JdbcDrivers>
+</config>

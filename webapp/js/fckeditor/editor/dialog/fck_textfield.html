@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" >
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2008 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * Text field dialog window.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="noindex, nofollow" name="robots" />
+<script src="common/fck_dialog_common.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+var dialog	= window.parent ;
+var oEditor = dialog.InnerDialogLoaded() ;
+
+// Gets the document DOM
+var oDOM = oEditor.FCK.EditorDocument ;
+
+var oActiveEl = dialog.Selection.GetSelectedElement() ;
+
+window.onload = function()
+{
+	// First of all, translate the dialog box texts
+	oEditor.FCKLanguageManager.TranslatePage(document) ;
+	
+	if ( oActiveEl && oActiveEl.tagName == 'INPUT' && ( oActiveEl.type == 'text' || oActiveEl.type == 'password' ) )
+	{
+		GetE('txtName').value	= oActiveEl.name ;
+		//GetE('txtValue').value	= oActiveEl.value ;
+		GetE('txtSize').value	= GetAttribute( oActiveEl, 'size' ) ;
+		GetE('txtMax').value	= GetAttribute( oActiveEl, 'maxLength' ) ;
+		GetE('txtType').value	= oActiveEl.type ;
+
+		//yupeng
+		GetE('txtDataType').value	= GetAttribute( oActiveEl, 'datatype' ) ;
+		GetE('txtRemark').value	= GetAttribute( oActiveEl, 'remark' ) ;
+		GetE('order').value	= GetAttribute( oActiveEl, 'order' ) ;
+	}	
+	else
+		oActiveEl = null ;
+
+	dialog.SetOkButton( true ) ;
+	dialog.SetAutoSize( true ) ;
+	SelectField( 'txtName' ) ;
+}
+
+function Ok()
+{	
+	//yupeng txtName must be not blank 
+	if(!CheckInput(GetE('txtName'),GetE('txtRemark')))
+		return false;
+		
+	 var txtName = 	GetE('txtName').value ;
+     var c = /^[a-zA-Z][0-9a-zA-Z_]*$/;   
+     if (!c.test(txtName)){
+      alert("名称只能为字母、数字、下划线，且必须以字母开头！！"); 
+      return;  
+     }  
+    
+	if ( isNaN( GetE('txtMax').value ) || GetE('txtMax').value < 0 )
+	{
+		//alert( "Maximum characters must be a positive number." ) ;
+		alert( '\u6700\u591a\u5b57\u7b26\u6570\u5fc5\u987b\u662f\u6b63\u6570.' ) ;
+		GetE('txtMax').focus() ;
+		return false ;
+	}
+	else if( isNaN( GetE('txtSize').value ) || GetE('txtSize').value < 0 )
+	{
+		//alert( "Width must be a positive number." ) ;
+		alert( '\u5b57\u7b26\u5bbd\u5ea6\u5fc5\u987b\u662f\u6b63\u6570.' ) ;
+		GetE('txtSize').focus() ;
+		return false ;
+	}else if( isNaN( GetE('order').value ) || GetE('order').value < 0 ){
+		// alert( '\u5b57\u7b26\u5bbd\u5ea6\u5fc5\u987b\u662f\u6b63\u6570.' ) ;
+		alert("排序序号必须为数字！！");
+		GetE('order').focus() ;
+		return false ;
+	}
+
+	oEditor.FCKUndo.SaveUndoStep() ;
+	
+	oActiveEl = CreateNamedElement( oEditor, oActiveEl, 'INPUT', {name: GetE('txtName').value, type: GetE('txtType').value } ) ;
+	
+	//SetAttribute( oActiveEl, 'value'	, GetE('txtValue').value ) ;
+	SetAttribute( oActiveEl, 'value'	, '${'+GetE('txtName').value+'}' ) ;
+	SetAttribute( oActiveEl, 'size'		, GetE('txtSize').value ) ;
+	SetAttribute( oActiveEl, 'maxlength', GetE('txtMax').value ) ;
+	
+	//set data type value
+	SetAttribute( oActiveEl, 'datatype', GetE('txtDataType').value ) ;
+	SetAttribute( oActiveEl, 'remark', GetE('txtRemark').value ) ;
+	if(GetE('txtDataType').value=='numeric'){
+	SetAttribute( oActiveEl, 'onblur', "if(this.value!=''&&!/^\\\\d+(\\\\.\\\\d+)?$/.test(this.value)){alert('请输入数值类型！！');this.focus();return false;}" ) ;
+	}
+	
+	//set order  value
+	SetAttribute( oActiveEl, 'order', GetE('order').value ) ;
+	if(oActiveEl.parentNode){
+	  node=oActiveEl.parentNode;
+	  while(true){
+	   if(node.nodeName=='TD'){
+	    break;
+	   }else{
+	   if(node.parentNode){
+	   node = node.parentNode;
+	   }else{
+	   break;
+	   }
+	   }
+	  }
+	 if(node.nodeName=='TD'){
+	 node.id="td"+GetE('txtName').value;
+	 node.setAttribute("remark",GetE('txtRemark').value);  
+	 node.setAttribute("class","${"+node.id+"_tdClass}"); 
+	 SetAttribute(oActiveEl,'pid',node.id);
+	  }
+	}
+	return true ;
+}
+function CheckInput( name , remark )
+{
+	if(name.value.Trim()==''){
+		alert('\u540d\u79f0\u4e0d\u80fd\u4e3a\u7a7a');
+		name.focus();
+		return false;
+	}
+	if(name.value.Trim()!=='')
+	{
+		if(!isNaN(name.value.Trim())){
+			alert('\u540d\u79f0\u4e0d\u80fd\u4e3a\u6570\u5b57');
+			name.focus();
+			return false;
+		}
+		if(remark.value.Trim()==''){
+			alert('\u5185\u5bb9\u63cf\u8ff0\u4e0d\u80fd\u4e3a\u7a7a');
+			remark.focus();
+			return false;
+		}
+	}
+	return true;
+}
+</script>
+</head>
+<body style="overflow: hidden">
+<table width="100%" style="height: 100%">
+	<tr>
+		<td align="center">
+		<table cellspacing="0" cellpadding="0" border="0">
+			<tr>
+				<td><span fcklang="DlgTextName">Name</span><br />
+				<input id="txtName" type="text" size="20" /></td>
+				<td></td>
+				<td><span fcklang="DlgRemarkText">Remark</span><br />
+				<input id="txtRemark" type="text" size="20" /></td>
+			</tr>
+			<tr>
+				<td><span fcklang="DlgTextCharWidth">Character Width</span><br />
+				<input id="txtSize" type="text" size="5" /></td>
+				<td></td>
+				<td><span fcklang="DlgTextMaxChars">Maximum Characters</span><br />
+				<input id="txtMax" type="text" size="5" /></td>
+			</tr>
+			<tr>
+				<td><span fcklang="DlgTextType">Type</span><br />
+				<select id="txtType">
+					<option value="text" selected="selected" fcklang="DlgTextTypeText">Text</option>
+					<option value="password" fcklang="DlgTextTypePass">Password</option>
+				</select></td>
+				<td></td>
+				<td><span fcklang="DlgTextDataType">DlgTextDataType</span><br />
+				<select id="txtDataType">
+					<option value="string" selected="selected" fcklang="DlgStringData">String</option>
+					<option value="numeric" fcklang="DlgNumericData">Numeric</option>
+				</select>
+				<td>
+			</tr>
+			<tr>
+				<td><span fcklang="DlgComponentOrder">DlgComponentOrder</span><br />
+				<input id="order" type="text" size="20" />
+				</td>
+				<td></td>
+			</tr>
+		</table>
+		</td>
+	</tr>
+</table>
+</body>
+</html>

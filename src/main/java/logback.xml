@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+
+	<jmxConfigurator />
+
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%date [%thread] %-5level - %X{username},%class:%method,%msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="logfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>D:/oalog/oa.log</File>
+		<encoder>
+			<pattern>%date [%thread] %-5level - %X{username},%class:%method,%msg%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${log.base}/%d{yyyy-MM-dd}.log.zip</FileNamePattern>
+		</rollingPolicy>
+	</appender>
+	
+	<appender name="oplog" class="ch.qos.logback.classic.db.DBAppender">
+	    <filter class="com.coffice.util.OperateLogFilter" />
+	    <connectionSource class="ch.qos.logback.core.db.DataSourceConnectionSource">
+	        <dataSource class="com.mchange.v2.c3p0.ComboPooledDataSource">
+	            <driverClass>net.sourceforge.jtds.jdbc.Driver</driverClass>
+	            <jdbcUrl>jdbc:sqlserver://127.0.0.1;databaseName=dx12345</jdbcUrl>
+	            <user>sa</user>
+	            <password>sdunisi_</password>
+	        </dataSource>
+	    </connectionSource>
+	</appender>
+	
+	<logger name="com.coffice" level="DEBUG"/>
+	<logger name="coffice.log" level="DEBUG"/>
+	<logger name="coffice.oplog" level="INFO" additivity="false">
+		<appender-ref ref="oplog" />
+	</logger>
+	
+	<root level="OFF">
+		<appender-ref ref="stdout" />
+		<appender-ref ref="logfile" />
+	</root>
+</configuration>
+

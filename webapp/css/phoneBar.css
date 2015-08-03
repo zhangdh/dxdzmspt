@@ -1,0 +1,217 @@
+input.zt0{
+  font-size: 9pt;
+  background: url(phoneBar/zt0.png);
+  width:16px;
+  height:16px;
+  border:0px;
+  color:000000;  
+}
+input.zt1{
+  font-size: 9pt;
+  background: url(phoneBar/zt1.png);
+  width:16px;
+  height:16px;
+  border:0px;
+  color:000000; 
+}
+input.zt2{
+  font-size: 9pt;
+  background: url(phoneBar/zt2.png);
+  width:16px;
+  height:16px;
+  border:0px;
+  color:000000; 
+}
+input.zt3{
+  font-size: 9pt;
+  background: url(phoneBar/zt3.png);
+  width:16px;
+  height:16px;
+  border:0px;
+  color:000000;  
+}
+
+
+
+input.cssButtonLong_zj{
+    font-size: 9pt;
+	background: url(phoneBar/zj.gif);
+	width:56px;
+	height:20px;
+	border:0px;
+	color:ffffff;
+		}
+
+input.cssButtonLong_bc{
+ color:ffffff;
+  font-size: 9pt;
+  background: url(phoneBar/bc.gif);
+  width:56px;
+  height:20px;
+  border:0px;
+
+  
+}
+
+input.cssButtonLong_zhj{
+ color:000000;
+  font-size: 12pt;
+  background: url(phoneBar/zhj.gif);
+  width:56px;
+  height:20px;
+  border:0px;
+}
+
+input.cssButtonLong_zhzx{
+ color:000000;
+  font-size: 12pt;
+  background: url(phoneBar/zhzx.gif);
+  width:76px;
+  height:20px;
+  border:0px;
+}
+
+input.cssButtonLong_cs{
+ color:ffffff;
+  font-size: 9pt;
+  background: url(phoneBar/cs.gif);
+  width:56px;
+  height:20px;
+  border:0px;
+}
+
+input.cssButtonLong_cszj{
+ color:ffffff;
+  font-size: 9pt;
+  background: url(phoneBar/cszj.gif);
+  width:82px;
+  height:20px;
+  border:0px;
+}
+
+input.cssButtonLong_cz{
+ color:ffffff;
+  font-size: 9pt;
+  background: url(phoneBar/cz.gif);
+  width:56px;
+  height:20px;
+  border:0px;
+}
+
+
+input.cssButtonLong_dc{
+ color:ffffff;
+  font-size: 9pt;
+  background: url(phoneBar/dc.gif);
+  width:56px;
+  height:20px;
+  border:0px;
+}
+
+
+input.cssButtonLong_dl{
+  color:000000;
+  font-size: 12pt;
+  background: url(phoneBar/dl.gif);
+  width:56px;
+  height:20px;
+  border:0px;
+  
+}
+
+input.cssButtonLong_hy{
+ color:ffffff;
+  font-size: 9pt;
+  background: url(phoneBar/hy.gif);
+  width:56px;
+  height:20px;
+  border:0px;
+}
+
+input.cssButtonLong_jt{
+ color:ffffff;
+  font-size: 9pt;
+  background: url(phoneBar/jt.gif);
+  width:56px;
+  height:20px;
+  border:0px;
+}
+
+input.cssButtonLong_lj{
+ color:ffffff;
+  font-size: 9pt;
+  background: url(phoneBar/lj.gif);
+  width:56px;
+  height:20px;
+  border:0px;
+}
+
+input.cssButtonLong_pz{
+ color:ffffff;
+  font-size: 9pt;
+  background: url(phoneBar/pz.gif);
+  width:56px;
+  height:20px;
+  border:0px;
+}
+
+input.cssButtonLong_qc{
+ color:ffffff;
+  font-size: 9pt;
+  background: url(phoneBar/qc.gif);
+  width:56px;
+  height:20px;
+  border:0px;
+}
+input.cssButtonLong_wb{
+ color:ffffff;
+  font-size: 9pt;
+  background: url(phoneBar/wb.gif);
+  width:56px;
+  height:20px;
+  border:0px;
+}
+input.cssButtonLong_wx{
+ color:000000;
+  font-size: 12pt;
+  background: url(phoneBar/wx.gif);
+  width:56px;
+  height:20px;
+  border:0px;
+}
+
+input.cssButtonLong_dd{
+ color:000000;
+  font-size: 12pt;
+  background: url(phoneBar/myd.gif);
+  width:75px;
+  height:20px;
+  border:0px;
+}
+
+input.cssButtonLong_myd{
+ color:000000;
+  font-size: 12pt;
+  background: url(phoneBar/myd.gif);
+  width:75px;
+  height:20px;
+  border:0px;
+}
+
+input.cssButtonLong_wx2{
+ color:000000;
+  font-size: 12pt;
+  background: url(phoneBar/zhzx.gif);
+  width:88px;
+  height:20px;
+  border:0px;
+  background-repeat: no-repeat;
+}
+input.cssButtonLong_zt{
+ color:000000;
+  font-size: 12pt;
+  background: url(phoneBar/zt.gif);
+  width:56px;
+  height:20px;
+  border:0px;
+}

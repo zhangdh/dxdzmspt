@@ -1,0 +1,107 @@
+<html>
+<head>
+<META HTTP-EQUIV="MSThemeCompatible" CONTENT="Yes">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Currency Converter</title>
+<STYLE type="text/css">
+	body, td, input, select, p { font-family:[$TextFont]; font-size:[$TextFontSize]pt}
+
+	a:link       { color: #0000FF; text-decoration: none }
+	a:visited    { color: #0000FF; text-decoration: none }
+	a:hover      { color: #FF0000; text-decoration: none }
+	a:active     { color: #FF0000; text-decoration: none }
+
+	a:link.msg 		{ color: #7DA1CD; text-decoration: none }
+	a:visited.msg { color: #7DA1CD; text-decoration: none }
+	a:hover.msg   { color: #0000FF; text-decoration: none }
+	a:active.msg  { color: #0000FF; text-decoration: none }
+	
+</STYLE>
+</head>
+
+<BODY topmargin="10" leftmargin="10" rightmargin="10" bottommargin="10">
+<script type="text/javascript" src="../js/jquery-1.3.1.js"></script>
+<script language="JavaScript" type="text/javascript">
+$(function(){
+	$("#search").ajaxStart(function(){
+		document.getElementById("t").innerHTML = "<span style='font-size:83%'>正在请求网络服务...</span><br/><img border='0' width='120' height='4' src='" + document.getElementById("t").waitimg + "'>";
+	});
+	$("#search").click(function(){
+		// 校验IP
+		if(!checkIP($("#a").val()))return;
+		$.ajax({
+			url:"http://www.youdao.com/smartresult-xml/search.s?type=ip&q="+$("#a").val(),
+			dataType:"text",
+			success: function(text){
+						var sAddress = "<table border='0' cellspacing='0' cellpadding='0'><tr><td><ul>";
+						sAddress += text;
+						sAddress += "</ul></td></tr></table>";
+						document.getElementById("t").innerHTML = sAddress;
+					 },
+			error: function (XMLHttpRequest, textStatus, errorThrown) {
+						document.getElementById("t").innerHTML = "无对应的IP信息";
+					    // 通常 textStatus 和 errorThrown 之中
+					    // 只有一个会包含信息
+					    this; // 调用本次AJAX请求时传递的options参数
+					}
+		});
+		
+	});
+});
+
+function checkIP(ip)
+{
+	var ipArray, j;
+	
+	if(/[A-Za-z_-]/.test(ip)){
+		if(!/^([\w-]+\.)+((com)|(net)|(org)|(gov\.cn)|(info)|(cc)|(com\.cn)|(net\.cn)|(org\.cn)|(name)|(biz)|(tv)|(cn)|(mobi)|(name)|(sh)|(ac)|(io)|(tw)|(com\.tw)|(hk)|(com\.hk)|(ws)|(travel)|(us)|(tm)|(la)|(me\.uk)|(org\.uk)|(ltd\.uk)|(plc\.uk)|(in)|(eu)|(it)|(jp))$/.test(ip)){
+			alert("不是正确的域名");
+			return false;
+		}
+	}
+	else{
+		ipArray = ip.split(".");
+		j = ipArray.length
+		if(j!=4)
+		{
+			alert("不是正确的IP");
+			return false;
+		}
+
+		for(var i=0;i<4;i++)
+		{
+			if(ipArray[i].length==0 || ipArray[i]>255)
+			{
+				alert("不是正确的IP");
+				return false;
+			}
+		}
+	}
+	
+	return true;
+}
+
+
+
+
+</script>
+
+<div align="center">
+	<p>&nbsp;</p>
+	<div style="color:#0;font-size:16px"> &nbsp;<b>IP地址地理位置查询</b></div>
+	<hr noshade color="#E0E0E0" size="1">
+	<table border="0" cellspacing="0" cellpadding="5" style="margin: 10 0 10 0">
+		<tr>
+			<td><span style="color:#000080"><b>IP地址或域名</b></span></td>
+			<td><input id="a" name="a" maxlength="128" size="20" value=""></td>
+			<td><input id="search" type="button" value=" 查询 "></td>
+		</tr>
+	</table>
+	<div id="t" name="t" dir="ltr" style="margin: 10 0 10 0"></div>
+	
+	<hr noshade color="#E0E0E0" size="1">
+	<div style="color: #7DA1CD; font-size: 100%"><span>Powered by 163.com</span></div>
+</div>
+
+</BODY>
+</html>

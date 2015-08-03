@@ -1,0 +1,211 @@
+input.BtnSignInOut{
+  color:000000;
+  font-size: 15px;
+  background: url(signin.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.BtnSignInOut1{
+  color:000000;
+  font-size: 15px;
+  background: url(signout.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.BtnIdleWork{
+  color:000000;
+  font-size: 15px;
+  background: url(idle.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.BtnIdleWork1{
+  color:000000;
+  font-size: 15px;
+  background: url(work.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.BtnIdleWork2{
+  color:000000;
+  font-size: 15px;
+  background: url(idle1.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.BtnCall{
+  color:000000;
+  font-size: 15px;
+  background: url(call.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.BtnCall1{
+  color:000000;
+  font-size: 15px;
+  background: url(call1.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.BtnAnswerRefuse{
+  color:000000;
+  font-size: 15px;
+  background: url(answer.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.BtnAnswerRefuse1{
+  color:000000;
+  font-size: 15px;
+  background: url(answer1.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.BtnAnswerRefuse2{
+  color:000000;
+  font-size: 15px;
+  background: url(refuse.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.BtnTrance{
+  color:000000;
+  font-size: 15px;
+  background: url(trance.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.BtnTrance1{
+  color:000000;
+  font-size: 15px;
+  background: url(trance1.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+
+input.BtnTranAgent{
+  color:000000;
+  font-size: 15px;
+  background: url(tranceagent.png) no-repeat;
+  width:70px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.BtnTranAgent1{
+  color:000000;
+  font-size: 15px;
+  background: url(tranceagent1.png) no-repeat;
+  width:70px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.BtnMeet{
+  color:000000;
+  font-size: 15px;
+  background: url(meet.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.BtnMeet1{
+  color:000000;
+  font-size: 15px;
+  background: url(meet1.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+
+input.BtnHold{
+  color:000000;
+  font-size: 15px;
+  background: url(hold.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.BtnHold1{
+  color:000000;
+  font-size: 15px;
+  background: url(hold1.png) no-repeat;
+  width:50px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
+input.BtnHold2{
+  color:000000;
+  font-size: 15px;
+  background: url(hold2.png) no-repeat;
+  width:70px;
+  height:16px;
+  border:0px;
+  margin-top:5px;
+  font-weight:800;
+  color:#529ADE;
+}
